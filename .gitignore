@@ -1,0 +1,52 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# IDEs
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Project-specific: keep folder structure but ignore all files inside
+assets/*
+!assets/.gitkeep
+!assets/code_sql/
+!assets/db_sql/
+!assets/cmp_results/
+assets/code_sql/*
+assets/db_sql/*
+assets/cmp_results/*
+!assets/code_sql/.gitkeep
+!assets/db_sql/.gitkeep
+!assets/cmp_results/.gitkeep
