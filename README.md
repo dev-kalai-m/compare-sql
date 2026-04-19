@@ -10,10 +10,22 @@ Designed for ~5 000 file corpora. Runs multi-process; full design is in
 
 ## Install
 
-Requires Python ≥ 3.11 and [uv](https://docs.astral.sh/uv/).
+Requires Python >= 3.11.
+
+### Option A: uv (recommended)
 
 ```bash
 uv sync
+```
+
+### Option B: pip (no uv required)
+
+```bash
+python3.11 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip setuptools wheel
+python -m pip install -e .
+python -m pip install pytest pytest-cov
 ```
 
 ## Layout
@@ -37,6 +49,8 @@ but all user data files (`.sql`, `.diff`, `.html`, `.json`, `.log`) are ignored.
 ```bash
 # Default: semantic mode, all CPU cores, storage + column-order ignored.
 uv run cmp-sql run
+# or (pip install path)
+cmp-sql run
 
 # Explicit flags:
 uv run cmp-sql run \
@@ -46,9 +60,19 @@ uv run cmp-sql run \
   --ignore-column-order \
   --workers 8 \
   --html-for non-identical
+# or (pip install path)
+cmp-sql run \
+  --source assets/code_sql --target assets/db_sql --out assets/cmp_results \
+  --mode semantic \
+  --ignore-storage \
+  --ignore-column-order \
+  --workers 8 \
+  --html-for non-identical
 
 # Print totals from a previous run:
 uv run cmp-sql stats assets/cmp_results/summary.json
+# or (pip install path)
+cmp-sql stats assets/cmp_results/summary.json
 ```
 
 ### Comparison modes
@@ -147,6 +171,10 @@ Structured edits:
 ```bash
 uv run pytest             # full test suite
 uv run pytest -k pairing  # one module
+
+# pip install path
+pytest
+pytest -k pairing
 ```
 
 Modules:
